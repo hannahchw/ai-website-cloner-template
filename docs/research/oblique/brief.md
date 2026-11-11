@@ -40,3 +40,13 @@
 - Links to other Oblique pages (About, Contact, service pages) point to the live oblique.com.my site. Only the homepage was cloned.
 - Hero word-swap and reveal motions are close approximations of the source's animation timing, not frame-exact.
 - Google Analytics / Tag Manager scripts were intentionally left out.
+
+## Update: clickTRUE test version
+
+The clone was then rebranded as a test of editing by request:
+
+- **Colours:** clickTRUE blue `#1aaae2`, navy `#154882`, grey `#828486` (see "BRAND COLOURS" in `src/app/globals.css`)
+- **Logo:** clickTRUE 15-years logo (colour in header, white in footer), files in `public/sites/oblique/brand/`
+- **Copy and facts:** taken from https://enquiry.clicktrue.biz/ (captured 11 Nov 2026), including the UniKL case study, 4 FAQs, 6 Google reviews quoted word for word, 14 client logos, PJ address and WhatsApp number
+- **Photos:** all Oblique photos replaced with branded placeholders (`image: null` in `content.ts`). Add a real photo by putting the file in `public/sites/clicktrue/` and setting its path.
+- **Years:** "17+ years" is used in copy, as on the enquiry page. The logo says 15 years.

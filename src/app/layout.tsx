@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Digital Marketing Agency in Kuala Lumpur, Malaysia | clickTRUE",
+  title: "clickTRUE Malaysia | Inbound Marketing Agency",
   description:
-    "clickTRUE is an integrated digital marketing agency in Kuala Lumpur, with one team across brand, content, performance, SEO and web.",
+    "clickTRUE is a digital marketing consultancy that specialises in inbound strategy and lead generation for B2B and Education brands.",
 };
 
 export default function RootLayout({

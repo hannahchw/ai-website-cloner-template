@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { services } from "./content";
-import { ArrowUpRight, SectionLabel } from "./shared";
+import { ArrowUpRight, PhotoOrPlaceholder, SectionLabel } from "./shared";
 
 const arrowLink =
   "group/arrow inline-flex shrink-0 items-center justify-center text-ink transition-colors duration-300 hover:text-accent";
@@ -41,7 +40,7 @@ export function Services() {
                       i === active ? "opacity-100" : "opacity-0",
                     )}
                   >
-                    <Image src={s.image} alt={s.imageAlt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+                    <PhotoOrPlaceholder src={s.image} label={s.imageLabel} sizes="(min-width: 768px) 50vw, 100vw" />
                   </div>
                 ))}
               </div>
@@ -49,7 +48,7 @@ export function Services() {
                 <span className="font-medium uppercase tracking-[0.22em]">
                   {current.number} · {current.tag}
                 </span>
-                <span>Editorial</span>
+                <span>{current.title}</span>
               </div>
             </div>
           </div>

@@ -1,10 +1,10 @@
-import Image from "next/image";
 import { process } from "./content";
-import { SectionLabel } from "./shared";
+import { PhotoOrPlaceholder, SectionLabel } from "./shared";
 
 /** Card colours per theme. Brand colours come from globals.css. */
 const themes = {
   light: { bg: "var(--brand-surface)", fg: "var(--brand-ink)", tag: undefined, body: "var(--brand-ink-2)", meta: "var(--brand-muted)" },
+  sand: { bg: "var(--brand-surface-2)", fg: "var(--brand-ink)", tag: undefined, body: "var(--brand-ink-2)", meta: "var(--brand-muted)" },
   beige: { bg: "var(--brand-surface-3)", fg: "var(--brand-ink)", tag: undefined, body: "var(--brand-ink-2)", meta: "var(--brand-muted)" },
   dark: { bg: "var(--brand-ink)", fg: "var(--brand-surface)", tag: "rgba(250,249,246,0.6)", body: "rgba(250,249,246,0.75)", meta: "rgba(250,249,246,0.55)" },
 };
@@ -54,7 +54,7 @@ export function Process() {
                   </div>
                   <div className="col-span-12 md:col-span-4">
                     <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] bg-surface-3">
-                      <Image src={step.image} alt={step.imageAlt} fill sizes="(min-width: 768px) 30vw, 100vw" className="object-cover" />
+                      <PhotoOrPlaceholder src={step.image} label={step.imageLabel} sizes="(min-width: 768px) 30vw, 100vw" />
                     </div>
                   </div>
                 </div>

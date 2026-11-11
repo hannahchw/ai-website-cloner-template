@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { testimonials } from "./content";
-import { SectionLabel } from "./shared";
+import { PhotoOrPlaceholder, SectionLabel } from "./shared";
 
 const AUTOPLAY_MS = 7000;
 
@@ -43,12 +42,12 @@ export function Testimonials() {
   const pad = (n: number) => String(n).padStart(2, "0");
 
   return (
-    <section className="relative" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+    <section id="testimonials" className="relative" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       <div className="mx-auto grid max-w-[1440px] grid-cols-12 gap-8 px-6 py-20 md:gap-10 md:px-10 md:py-48">
         <div className="col-span-12 md:col-span-4">
           <SectionLabel className="pb-8">{testimonials.eyebrow}</SectionLabel>
           <div className="relative aspect-[4/5] w-full max-w-[320px] overflow-hidden rounded-[20px] bg-surface-2">
-            <Image src={testimonials.image} alt={testimonials.imageAlt} fill sizes="320px" className="object-cover" />
+            <PhotoOrPlaceholder src={testimonials.image} label={testimonials.imageLabel} sizes="320px" />
           </div>
           <div className="mt-6">
             <p className="font-display text-[18px] leading-tight text-ink">{testimonials.caption}</p>

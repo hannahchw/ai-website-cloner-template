@@ -1,4 +1,43 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { brand } from "./content";
+
+/** Branded block shown where a real photo has not been supplied yet. */
+export function BrandPlaceholder({ label, className }: { label: string; className?: string }) {
+  return (
+    <div
+      className={cn(
+        "absolute inset-0 flex flex-col items-center justify-center gap-4 rounded-[inherit] bg-gradient-to-br from-ink via-ink to-accent p-8 text-center ring-1 ring-inset ring-surface/20",
+        className,
+      )}
+    >
+      <Image
+        src={brand.logoWhite.src}
+        alt=""
+        width={brand.logoWhite.width}
+        height={brand.logoWhite.height}
+        className="h-auto w-[55%] max-w-[260px] opacity-90"
+      />
+      <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-surface/70">{label}</span>
+    </div>
+  );
+}
+
+/** Shows the photo if one is set, otherwise the branded placeholder. */
+export function PhotoOrPlaceholder({
+  src,
+  alt,
+  label,
+  sizes,
+}: {
+  src: string | null;
+  alt?: string;
+  label: string;
+  sizes: string;
+}) {
+  if (!src) return <BrandPlaceholder label={label} />;
+  return <Image src={src} alt={alt ?? label} fill sizes={sizes} className="object-cover" />;
+}
 
 /** Small uppercase label with a short red line in front. */
 export function SectionLabel({

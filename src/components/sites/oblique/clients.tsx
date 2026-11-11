@@ -13,12 +13,12 @@ export function Clients() {
       <div className="relative">
         <div className="marquee-track flex w-max items-center whitespace-nowrap">
           {loop.map((logo, i) => (
-            <div key={`${logo.name}-${i}`} className="relative h-[58px] w-[144px] flex-shrink-0 md:h-[86px] md:w-[198px]">
+            <div key={`${logo.name}-${i}`} className="relative h-[80px] w-[130px] flex-shrink-0 md:h-[110px] md:w-[180px]">
               <Image
                 src={logo.src}
                 alt={i < clients.logos.length ? logo.name : ""}
                 fill
-                sizes="198px"
+                sizes="180px"
                 className="object-contain opacity-[0.82] transition-opacity duration-300 hover:opacity-100"
               />
             </div>

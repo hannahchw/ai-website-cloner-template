@@ -11,7 +11,8 @@ export function Cta() {
         </SectionLabel>
         <div className="col-span-12 md:col-span-9">
           <h2 className="font-display display-lg text-ink">
-            {cta.headline} <span className="text-accent">{cta.headlineRed}</span>?
+            {cta.headline} <span className="text-accent">{cta.headlineRed}</span>
+            {cta.headlineEnd}
           </h2>
           <p className="mt-8 max-w-[58ch] text-[16px] leading-[1.65] text-ink-2 md:text-[18px]">{cta.body}</p>
           <div className="mt-10 flex flex-wrap items-center gap-5 md:gap-8">
@@ -23,7 +24,7 @@ export function Cta() {
               <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a
-              href={brand.quizHref}
+              href={brand.youtubeHref}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[14px] font-medium text-ink transition-colors hover:border-accent hover:text-accent"
@@ -61,18 +62,24 @@ export function Footer() {
                   </a>
                 </div>
               </div>
-              <div className="col-span-6 md:col-span-2">
+              <div className="col-span-12 md:col-span-3">
                 <h2 className="eyebrow !text-surface/50">Contact</h2>
                 <ul className="mt-6 space-y-2.5">
                   {footer.contact.map((line) => (
-                    <li key={line} className="text-[14px] text-surface/85">
-                      {line}
+                    <li key={line.label} className="text-[14px] text-surface/85">
+                      {line.href ? (
+                        <a className={footLink} href={line.href}>
+                          {line.label}
+                        </a>
+                      ) : (
+                        line.label
+                      )}
                     </li>
                   ))}
                 </ul>
               </div>
               {footer.columns.map((col) => (
-                <div key={col.title} className="col-span-6 md:col-span-2">
+                <div key={col.title} className="col-span-6 md:col-span-2 md:last:col-start-11">
                   <h2 className="eyebrow !text-surface/50">{col.title}</h2>
                   <ul className="mt-6 space-y-2.5">
                     {col.links.map((l) => (
@@ -97,14 +104,13 @@ export function Footer() {
               />
             </div>
 
-            <div className="mt-10 flex flex-col items-start justify-between gap-6 text-[12px] md:mt-14 md:flex-row md:items-center">
+            <p className="mt-8 text-[12px] text-surface/50">{footer.company}</p>
+
+            <div className="mt-8 flex flex-col items-start justify-between gap-6 text-[12px] md:mt-10 md:flex-row md:items-center">
               <div className="flex flex-wrap items-center gap-x-8 gap-y-2 uppercase tracking-[0.22em] text-surface/50">
                 {footer.facts.map((f) => (
                   <span key={f}>{f}</span>
                 ))}
-                <span>
-                  {footer.hours} <span className="text-surface/35">{footer.hoursZone}</span>
-                </span>
               </div>
               <div className="flex flex-wrap items-center gap-6">
                 {footer.socials.map((s) => (
