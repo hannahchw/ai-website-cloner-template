@@ -58,3 +58,4 @@ The clone was then rebranded as a test of editing by request:
 - **Contact form:** `contact.tsx`, placed before the footer. Fields: name, email, company, phone. **Not connected yet**: submitting only shows a test note. Replace the `<form>` with the real form embed before launch.
 - **Nav:** "Contact" added to the header menu and the footer.
 - **Deploy:** standard Next.js app, deploys to Vercel as-is (import the repo, pick this branch).
+- **Vercel project:** `clicktrue` team, project `ai-website-cloner-template`. Production branch should track `claude/zealous-fermi-biylky` (Settings → Environments → Production → Branch Tracking).
