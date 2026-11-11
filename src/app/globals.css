@@ -4,11 +4,41 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ==========================================================
+   BRAND COLOURS (Oblique clone)
+   Change a value here and it updates everywhere on the page.
+   ========================================================== */
+:root {
+  /* clickTRUE palette. Previous Oblique values: accent #e51c42, ink #141312, ink-2 #2b2926, muted #8b8880 */
+  --brand-accent: #1aaae2; /* clickTRUE blue: highlights, buttons, dots */
+  --brand-ink: #154882; /* clickTRUE navy: headings, dark sections */
+  --brand-ink-2: #2b3a4f; /* body text */
+  --brand-muted: #828486; /* clickTRUE grey: small labels */
+  --brand-rule: #e5e2d8; /* thin divider lines */
+  --brand-surface: #faf9f6; /* main off-white background */
+  --brand-surface-2: #f3f1ea; /* light beige sections */
+  --brand-surface-3: #ece9df; /* darker beige (phase 02 card) */
+}
+
+@theme inline {
+  --color-accent: var(--brand-accent);
+  --color-ink: var(--brand-ink);
+  --color-ink-2: var(--brand-ink-2);
+  --color-muted: var(--brand-muted);
+  --color-rule: var(--brand-rule);
+  --color-surface: var(--brand-surface);
+  --color-surface-2: var(--brand-surface-2);
+  --color-surface-3: var(--brand-surface-3);
+  --radius-cta: 4px;
+  --text-display-md: clamp(2.5rem, 1.5rem + 4.2vw, 5.5rem);
+  --text-display-lg: clamp(3rem, 1.8rem + 6vw, 8rem);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -28,9 +58,7 @@
   --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
@@ -126,5 +154,73 @@
   }
   html {
     @apply font-sans;
+  }
+}
+/* ==========================================================
+   Oblique page styles (typography helpers + animations)
+   ========================================================== */
+.font-display {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.028em;
+  font-weight: 700;
+}
+
+.eyebrow {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.display-md {
+  font-size: var(--text-display-md);
+  letter-spacing: -0.032em;
+  line-height: 0.98;
+}
+
+.display-lg {
+  font-size: var(--text-display-lg);
+  letter-spacing: -0.036em;
+  line-height: 0.94;
+}
+
+.marquee-track {
+  will-change: transform;
+  animation: marquee 55s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+}
+@keyframes hero-rise {
+  from { transform: translateY(110%); }
+}
+.hero-fade-up {
+  animation: hero-fade-up 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.hero-rise {
+  animation: hero-rise 1s cubic-bezier(0.22, 0.8, 0.22, 1) both;
+}
+
+@keyframes word-in {
+  from { opacity: 0; transform: translateY(40%); }
+}
+@keyframes word-out {
+  to { opacity: 0; transform: translateY(-40%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-up,
+  .hero-rise,
+  .marquee-track {
+    animation: none !important;
   }
 }
