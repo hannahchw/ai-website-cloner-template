@@ -10,7 +10,7 @@ const ORIGIN = "https://oblique.com.my";
 const asset = (path: string) => `/sites/oblique/${path}`;
 
 export const brand = {
-  name: "Oblique",
+  name: "clickTRUE",
   /** Header logo (light background). Old Oblique logo: brand/oblique-wordmark.png, 209x48 */
   logo: { src: asset("brand/clicktrue-15yrs-colour.png"), width: 751, height: 199, alt: "clickTRUE Malaysia, 15 years" },
   /** Footer logo (dark background). Colour option: brand/clicktrue-15yrs-dark-bg.png, 387x103 */
@@ -47,7 +47,7 @@ export const hero = {
   rotatingWords: ["stronger", "faster", "smarter", "louder", "further"],
   ctaLabel: "Get in touch",
   intro:
-    "Oblique is an integrated digital marketing agency in Kuala Lumpur, with one team across brand, content, performance, SEO and web.",
+    "clickTRUE is an integrated digital marketing agency in Kuala Lumpur, with one team across brand, content, performance, SEO and web.",
   introBold: "Every channel you invest in makes the others stronger.",
   secondaryLabel: "See selected work →",
   secondaryHref: "#work",
@@ -83,7 +83,7 @@ export const problem = {
     "When results disappoint, every agency points at someone else's work.",
     "Right now, you're the only one coordinating all of it.",
   ],
-  closingWhite: "Oblique runs it as one team.",
+  closingWhite: "clickTRUE runs it as one team.",
   closingRed: "Everything builds on itself.",
   numbersEyebrow: "By the numbers",
   numbers: [
@@ -158,7 +158,7 @@ export const integration = {
   eyebrow: "Compound",
   headline: "When your agencies actually work together,",
   headlineRed: "the results compound.",
-  coreTitle: "Oblique",
+  coreTitle: "clickTRUE",
   coreSubtitle: "One Team",
   nodes: ["Brand", "Content", "Performance", "SEO & GEO", "Web"],
   hint: "Hover the diagram. The core follows your cursor.",
@@ -188,7 +188,7 @@ export const work = {
 };
 
 export const process = {
-  eyebrow: "The Oblique Method",
+  eyebrow: "The clickTRUE Method",
   headline: "Growth, delivered in three phases",
   steps: [
     {
@@ -224,8 +224,8 @@ export const process = {
 export const testimonials = {
   eyebrow: "In their words",
   image: asset("team/team-group-alt.jpg"),
-  imageAlt: "The Oblique team",
-  caption: "The Oblique team",
+  imageAlt: "The clickTRUE team",
+  caption: "The clickTRUE team",
   captionSub: "Kuala Lumpur",
   quotes: [
     { name: "Alvin Yip", quote: "Your team's commitment to excellence, attention to detail, and passion for your craft are truly remarkable. The response from our audience has been overwhelmingly positive, and we are already seeing the fantastic impact it is making in our market." },
@@ -241,12 +241,12 @@ export const faq = {
   headlineRed: "ask us.",
   intro: "Short, straight answers. If yours isn't here, the strategy call will cover it.",
   items: [
-    { q: "Can I engage Oblique for just one service, or do I have to take everything?", a: "Either works. Most clients start with one or two disciplines (brand, performance or web) and layer in others once the first engagement proves itself. The integrated model is a capability, not a requirement. If you only need creative, we'll run creative. If you want everything connected, we'll run everything connected." },
+    { q: "Can I engage clickTRUE for just one service, or do I have to take everything?", a: "Either works. Most clients start with one or two disciplines (brand, performance or web) and layer in others once the first engagement proves itself. The integrated model is a capability, not a requirement. If you only need creative, we'll run creative. If you want everything connected, we'll run everything connected." },
     { q: "How is an integrated agency different from a full-service one?", a: "A full-service agency offers multiple services. An integrated agency runs them as one system under one brief. We call it skill stacking: our operators hold multiple disciplines, so strategy and execution happen in the same room. Insights from performance feed content. SEO learnings shape the brand story. One team, one plan, one conversation." },
     { q: "What kind of businesses do you typically work with?", a: "DTC and founder-led brands between RM 20–50M in revenue, usually in consumer, wellness, F&B, property or industrial categories. Commercially-minded operators who want strategy tied to P&L, not decks. We're a fit for challenger brands, not enterprise accounts with eight approval layers." },
     { q: "What does a typical engagement look like?", a: "Most start with a 30-minute strategy call, followed by a paid audit or discovery phase to map where the biggest opportunity is. From there, scopes range from a single-discipline retainer (e.g. performance-only) to a full-system build (brand, site, content, paid and SEO). Timelines run 8–16 weeks for most builds, with retainers typically starting at three months." },
     { q: "Do you work with brands outside Malaysia?", a: "Yes. Our team is based in Kuala Lumpur but we run engagements across Southeast Asia and occasionally further afield. Clients have included businesses in Singapore, Indonesia, Thailand and beyond. Most of our paid-media and SEO work is region-agnostic; brand and content work is where local nuance matters most." },
-    { q: "How much does it cost to work with Oblique?", a: "Project and retainer pricing depends on scope, team size and timeline. As a ballpark, single-service retainers typically start from RM 15k / month and integrated engagements from RM 40k / month. One-off builds (brand or website) range from RM 25k to RM 150k+. We'll scope properly on a first call. No ballpark figure here is a substitute for a real brief." },
+    { q: "How much does it cost to work with clickTRUE?", a: "Project and retainer pricing depends on scope, team size and timeline. As a ballpark, single-service retainers typically start from RM 15k / month and integrated engagements from RM 40k / month. One-off builds (brand or website) range from RM 25k to RM 150k+. We'll scope properly on a first call. No ballpark figure here is a substitute for a real brief." },
   ],
 };
 
@@ -260,7 +260,7 @@ export const cta = {
 };
 
 export const footer = {
-  copyright: "© Oblique 2026",
+  copyright: "© clickTRUE 2026",
   ctaLabel: "Get in touch",
   contact: ["hello@oblique.com.my", "+60 16-203 0912", "Level 15, Menara K1,", "Jalan Klang Lama,", "58000 Kuala Lumpur"],
   columns: [
