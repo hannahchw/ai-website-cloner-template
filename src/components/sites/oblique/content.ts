@@ -42,9 +42,9 @@ export const nav = {
 export const hero = {
   eyebrow: "Malaysia's Integrated Digital Marketing Agency",
   srHeading: "An integrated digital marketing agency in Kuala Lumpur.",
-  line1: "Grow your brand",
+  line1: "Grow your sales",
   /** The red word rotates through this list. */
-  rotatingWords: ["stronger", "faster", "smarter", "louder", "further"],
+  rotatingWords: ["faster", "smarter", "further", "louder", "stronger"],
   ctaLabel: "Get in touch",
   intro:
     "clickTRUE is an integrated digital marketing agency in Kuala Lumpur, with one team across brand, content, performance, SEO and web.",
