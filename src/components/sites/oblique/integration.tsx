@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { integration } from "./content";
 import { SectionLabel } from "./shared";
@@ -102,6 +103,18 @@ export function Integration() {
             </div>
           </div>
         </div>
+
+        {integration.teamPhoto && (
+          <div className="relative mt-20 aspect-[4/3] w-full overflow-hidden rounded-[24px] md:mt-28 md:aspect-[16/7]">
+            <Image
+              src={integration.teamPhoto.src}
+              alt={integration.teamPhoto.alt}
+              fill
+              sizes="(min-width: 1440px) 1360px, 100vw"
+              className="object-cover object-[center_60%]"
+            />
+          </div>
+        )}
       </div>
     </section>
   );

@@ -6,32 +6,62 @@ export function Cta() {
   return (
     <section id="cta" className="relative">
       <div className="mx-auto grid max-w-[1440px] grid-cols-12 gap-6 px-6 py-20 md:px-10 md:py-48">
-        <SectionLabel className="col-span-12 md:col-span-3 md:items-start" lineClassName="md:mt-[1.1rem]">
+        <SectionLabel
+          className="col-span-12 md:col-span-3 md:items-start"
+          lineClassName="md:mt-[1.1rem]"
+        >
           {cta.eyebrow}
         </SectionLabel>
         <div className="col-span-12 md:col-span-9">
           <h2 className="font-display display-lg text-ink">
-            {cta.headline} <span className="text-accent">{cta.headlineRed}</span>
+            {cta.headline}{" "}
+            <span className="text-accent">{cta.headlineRed}</span>
             {cta.headlineEnd}
           </h2>
-          <p className="mt-8 max-w-[58ch] text-[16px] leading-[1.65] text-ink-2 md:text-[18px]">{cta.body}</p>
-          <div className="mt-10 flex flex-wrap items-center gap-5 md:gap-8">
-            <a
-              className="group inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-[15px] font-medium text-surface transition-transform hover:translate-y-[-1px]"
-              href={brand.contactHref}
-            >
-              {cta.primaryLabel}
-              <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href={brand.youtubeHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-[14px] font-medium text-ink transition-colors hover:border-accent hover:text-accent"
-            >
-              {cta.secondaryLabel}
-              <span className="inline-block translate-y-[-1px] transition-transform group-hover:translate-x-1">→</span>
-            </a>
+          <div className="mt-2 flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-14">
+            <div className="min-w-0 lg:flex-[3]">
+              <p className="mt-8 max-w-[58ch] text-[16px] leading-[1.65] text-ink-2 md:text-[18px]">
+                {cta.body}
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-5 md:gap-8">
+                <a
+                  className="group inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-[15px] font-medium text-surface transition-transform hover:translate-y-[-1px]"
+                  href={brand.contactHref}
+                >
+                  {cta.primaryLabel}
+                  <span className="inline-block transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </a>
+                <a
+                  href={brand.youtubeHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-4 text-[14px] font-medium text-ink transition-colors hover:text-accent"
+                >
+                  <Image
+                    src={cta.videoThumb}
+                    alt=""
+                    width={264}
+                    height={149}
+                    className="h-auto w-[132px] shrink-0 rounded-[10px]"
+                  />
+                  <span className="max-w-[30ch] border-b border-ink/20 pb-1 transition-colors group-hover:border-accent">
+                    {cta.secondaryLabel} →
+                  </span>
+                </a>
+              </div>
+            </div>
+            {cta.photo && (
+              <Image
+                src={cta.photo.src}
+                alt={cta.photo.alt}
+                width={cta.photo.width}
+                height={cta.photo.height}
+                sizes="(min-width: 1024px) 30vw, 90vw"
+                className="h-auto w-full max-w-[460px] self-center lg:flex-[2]"
+              />
+            )}
           </div>
         </div>
       </div>
@@ -39,7 +69,8 @@ export function Cta() {
   );
 }
 
-const footLink = "text-[14px] text-surface/85 transition-colors hover:text-accent";
+const footLink =
+  "text-[14px] text-surface/85 transition-colors hover:text-accent";
 
 export function Footer() {
   return (
@@ -49,7 +80,9 @@ export function Footer() {
           <div className="px-6 pb-10 pt-14 md:px-12 md:pb-12 md:pt-20">
             <div className="grid grid-cols-12 gap-x-6 gap-y-12 border-b border-surface/10 pb-14 md:gap-y-16 md:pb-20">
               <div className="col-span-12 flex flex-col justify-between gap-10 md:col-span-4">
-                <p className="text-[12px] uppercase tracking-[0.24em] text-surface/50">{footer.copyright}</p>
+                <p className="text-[12px] uppercase tracking-[0.24em] text-surface/50">
+                  {footer.copyright}
+                </p>
                 <div>
                   <a
                     className="group inline-flex items-center gap-4 rounded-full bg-surface px-7 py-4 text-[14px] font-medium text-ink transition-colors hover:bg-accent hover:text-surface"
@@ -66,7 +99,10 @@ export function Footer() {
                 <h2 className="eyebrow !text-surface/50">Contact</h2>
                 <ul className="mt-6 space-y-2.5">
                   {footer.contact.map((line) => (
-                    <li key={line.label} className="text-[14px] text-surface/85">
+                    <li
+                      key={line.label}
+                      className="text-[14px] text-surface/85"
+                    >
                       {line.href ? (
                         <a className={footLink} href={line.href}>
                           {line.label}
@@ -79,7 +115,10 @@ export function Footer() {
                 </ul>
               </div>
               {footer.columns.map((col) => (
-                <div key={col.title} className="col-span-6 md:col-span-2 md:last:col-start-11">
+                <div
+                  key={col.title}
+                  className="col-span-6 md:col-span-2 md:last:col-start-11"
+                >
                   <h2 className="eyebrow !text-surface/50">{col.title}</h2>
                   <ul className="mt-6 space-y-2.5">
                     {col.links.map((l) => (
@@ -114,7 +153,11 @@ export function Footer() {
               </div>
               <div className="flex flex-wrap items-center gap-6">
                 {footer.socials.map((s) => (
-                  <a key={s.label} className="group inline-flex items-center gap-1 text-[13px] text-surface/85 transition-colors hover:text-accent" href={s.href}>
+                  <a
+                    key={s.label}
+                    className="group inline-flex items-center gap-1 text-[13px] text-surface/85 transition-colors hover:text-accent"
+                    href={s.href}
+                  >
                     {s.label}
                     <span className="inline-block text-[11px] transition-transform duration-300 group-hover:-translate-y-[2px] group-hover:translate-x-[2px]">
                       ↗

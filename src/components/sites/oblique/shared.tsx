@@ -23,20 +23,70 @@ export function BrandPlaceholder({ label, className }: { label: string; classNam
   );
 }
 
-/** Shows the photo if one is set, otherwise the branded placeholder. */
+/**
+ * How an image sits in its box.
+ * - "cover": a photo that fills the box (cropped at the edges).
+ * - "contain": an icon, logo or screenshot shown whole, on a white card.
+ */
+export type ImageFit = "cover" | "contain";
+
+/**
+ * Shows the photo (or looping video, for .mp4 files) if one is set,
+ * otherwise the branded placeholder.
+ */
 export function PhotoOrPlaceholder({
   src,
   alt,
   label,
   sizes,
+  fit = "cover",
+  position,
+  poster,
+  background = "#ffffff",
 }: {
   src: string | null;
   alt?: string;
   label: string;
   sizes: string;
+  fit?: ImageFit;
+  /** CSS object-position, e.g. "35% center", to choose which part of a photo stays in view. */
+  position?: string;
+  /** Still frame shown before a video loads. */
+  poster?: string;
+  /** Card colour behind a "contain" image. Defaults to white. */
+  background?: string;
 }) {
   if (!src) return <BrandPlaceholder label={label} />;
-  return <Image src={src} alt={alt ?? label} fill sizes={sizes} className="object-cover" />;
+  const contain = fit === "contain";
+  const media = src.endsWith(".mp4") ? (
+    <video
+      src={src}
+      poster={poster}
+      autoPlay
+      muted
+      loop
+      playsInline
+      aria-label={alt ?? label}
+      className={cn("absolute inset-0 h-full w-full", contain ? "object-contain p-[12%]" : "object-cover")}
+    />
+  ) : (
+    <Image
+      src={src}
+      alt={alt ?? label}
+      fill
+      sizes={sizes}
+      unoptimized={src.endsWith(".gif")}
+      className={contain ? "object-contain p-[12%]" : "object-cover"}
+      style={position ? { objectPosition: position } : undefined}
+    />
+  );
+  return contain ? (
+    <div className="absolute inset-0 rounded-[inherit]" style={{ background }}>
+      {media}
+    </div>
+  ) : (
+    media
+  );
 }
 
 /** Small uppercase label with a short red line in front. */

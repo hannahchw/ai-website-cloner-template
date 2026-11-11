@@ -39,6 +39,7 @@ export const nav = {
     { label: "Your Team", href: "#integration" },
     { label: "How We Work", href: "#process" },
     { label: "FAQ", href: "#faq" },
+    { label: "Contact", href: "#contact" },
   ],
   ctaLabel: "Enquire now",
 };
@@ -112,7 +113,7 @@ export const services = {
       title: "Leads Generation Solution",
       body: "Plan, execute, and optimise ad campaigns that drive leads, from ads to landing pages.",
       bullets: ["Ad Campaigns", "Landing Pages", "Daily Optimisation"],
-      image: null,
+      image: asset("services/svc-leadgen.png"),
       imageLabel: "Leads Generation",
       href: "#cta",
     },
@@ -122,7 +123,7 @@ export const services = {
       title: "Media Buy (Pay-Per-Click)",
       body: "Strategic paid ad campaigns on Google, Facebook, LinkedIn, TikTok, OpenAI and ChatGPT to drive targeted traffic.",
       bullets: ["Google", "Facebook", "LinkedIn", "TikTok", "ChatGPT"],
-      image: null,
+      image: asset("services/svc-ppc.png"),
       imageLabel: "Media Buy",
       href: "#cta",
     },
@@ -132,7 +133,7 @@ export const services = {
       title: "Video Marketing",
       body: "Engaging video content (explainers, ads, testimonials) that boosts engagement and drives conversions.",
       bullets: ["Explainers", "Video Ads", "Testimonials"],
-      image: null,
+      image: asset("services/svc-video.png"),
       imageLabel: "Video Marketing",
       href: "#cta",
     },
@@ -142,7 +143,7 @@ export const services = {
       title: "Content Creation",
       body: "Developing valuable written and visual content (blogs, articles, infographics) to nurture your audience.",
       bullets: ["Blogs", "Articles", "Infographics"],
-      image: null,
+      image: asset("services/svc-content.png"),
       imageLabel: "Content Creation",
       href: "#cta",
     },
@@ -152,7 +153,7 @@ export const services = {
       title: "Social Media Management",
       body: "Managing your social media presence to build brand awareness and engage your audience.",
       bullets: ["Brand Awareness", "Audience Engagement"],
-      image: null,
+      image: asset("services/svc-social.png"),
       imageLabel: "Social Media",
       href: "#cta",
     },
@@ -162,11 +163,13 @@ export const services = {
       title: "Email Marketing",
       body: "Nurturing leads and engaging customers with targeted email campaigns and automation.",
       bullets: ["Targeted Campaigns", "Automation"],
-      image: null,
+      image: asset("services/svc-email.png"),
       imageLabel: "Email Marketing",
       href: "#cta",
     },
   ] as { number: string; tag: string; title: string; body: string; bullets: string[]; image: string | null; imageLabel: string; href: string }[],
+  /** Service images are illustrations, so they show whole on the beige card instead of filling it. */
+  imageFit: "contain" as const,
 };
 
 export const integration = {
@@ -185,6 +188,25 @@ export const integration = {
   ],
   closing:
     "Transparency isn't optional. You get live dashboards and real-time insights, and every time we optimise, we keep you in the loop.",
+  /** Wide team photo under the text. Set to null to hide it. */
+  teamPhoto: { src: asset("photos/photo-team-office.jpg"), alt: "The clickTRUE team at the Petaling Jaya office" } as { src: string; alt: string } | null,
+};
+
+export const awards = {
+  eyebrow: "Awards & partnerships",
+  headline: "Certified by the platforms.",
+  headlineRed: "Recognised by the industry.",
+  body: "We're a Google Premier Partner, a Meta Business Partner and a HubSpot Platinum Solutions Partner. In 2022, we were named Silver winner for Performance Marketing Agency of the Year by A+M (Advertising + Marketing).",
+  photo: { src: asset("photos/photo-awards-night.jpg"), alt: "The clickTRUE team on stage at the MARKies Awards 2022", caption: "MARKies Awards night, 2022" },
+  badges: [
+    { name: "Google Premier Partner", src: asset("awards/award-google-premier.png") },
+    { name: "Meta Business Partner", src: asset("awards/award-meta-partner.png") },
+    { name: "HubSpot Platinum Solutions Partner", src: asset("awards/award-hubspot-platinum.png") },
+    { name: "Google Analytics Certified Partner", src: asset("awards/award-ga-partner.png") },
+    { name: "Microsoft Advertising", src: asset("awards/award-microsoft-ads.png") },
+    { name: "A+M Agency of the Year and MARKies Awards 2022", src: asset("awards/award-aoty-markies-2022.png") },
+    { name: "Silver, Performance Marketing Agency of the Year 2022 (A+M)", src: asset("awards/award-am-silver-2022.png") },
+  ],
 };
 
 export const work = {
@@ -193,6 +215,8 @@ export const work = {
   intro:
     "Generate leads for UniKL's 200+ programmes offered across 12 campuses in Malaysia in the span of 10 months.",
   logo: { src: asset("clients/10.png"), alt: "UniKL Universiti Kuala Lumpur" },
+  /** Screenshot of the landing page built for the campaign. */
+  banner: { src: asset("case-study/unikl-intakes.jpg"), alt: "UniKL 2025 intake landing page built by clickTRUE", caption: "Landing page by clickTRUE" },
   stats: [
     { value: "52k+", label: "Leads captured through our lead gen campaign" },
     { value: "1,584", label: "Actual student enrolments" },
@@ -216,8 +240,9 @@ export const process = {
       tag: "Performance Analysis · Competitor Research · Campaign Strategy",
       title: "We diagnose before we prescribe.",
       body: "We deep dive into your past campaigns to uncover what's not working. Whether it's weak targeting, generic copy, or unresponsive landing pages, we identify the root cause before prescribing a solution.",
-      image: null,
+      image: asset("photos/photo-team-meeting.jpg"),
       imageLabel: "Diagnose",
+      imagePosition: "35% center",
       theme: "light" as const,
     },
     {
@@ -225,8 +250,10 @@ export const process = {
       tag: "Buyer Persona Research · Inbound Copywriting · Graphic Design",
       title: "We speak your audience's language.",
       body: "We study your prospects' pain points, objections, and motivators, then craft messages that speak directly to them. This empathy-first approach turns passive scrollers into qualified leads.",
-      image: null,
+      image: asset("illustrations/3d-audience.mp4"),
       imageLabel: "Audience",
+      imageFit: "contain" as const,
+      poster: asset("illustrations/3d-audience-poster.jpg"),
       theme: "beige" as const,
     },
     {
@@ -234,8 +261,10 @@ export const process = {
       tag: "Optimisation · Campaign Monitoring · Live Reports",
       title: "We treat your budget like our own.",
       body: "Transparency isn't optional. We provide live dashboards, real-time insights, and daily monitoring. Every time we optimise, we make sure you're in the loop.",
-      image: null,
+      image: asset("illustrations/3d-paid-ads.mp4"),
       imageLabel: "Budget",
+      imageFit: "contain" as const,
+      poster: asset("illustrations/3d-paid-ads-poster.jpg"),
       theme: "sand" as const,
     },
     {
@@ -243,16 +272,29 @@ export const process = {
       tag: "Design · Copywriting · Media Planning · Media Buying",
       title: "We bring a full team to your campaign.",
       body: "With a dedicated team of five (Strategist, Account Manager, Content Writer, Designer, and Media Buyer), you're backed by specialists at every stage.",
-      image: null,
+      image: asset("photos/photo-google-malaysia.jpg"),
       imageLabel: "Full team",
       theme: "dark" as const,
     },
-  ] as { number: string; tag: string; title: string; body: string; image: string | null; imageLabel: string; theme: "light" | "beige" | "sand" | "dark" }[],
+  ] as {
+    number: string;
+    tag: string;
+    title: string;
+    body: string;
+    /** A photo, or an .mp4 for a looping animation. */
+    image: string | null;
+    imageLabel: string;
+    imageFit?: "cover" | "contain";
+    imagePosition?: string;
+    poster?: string;
+    theme: "light" | "beige" | "sand" | "dark";
+  }[],
 };
 
 export const testimonials = {
   eyebrow: "Real stories",
-  image: null as string | null,
+  /** Screenshot of the Google review quoted first. */
+  image: asset("testimonials/03.jpg") as string | null,
   imageLabel: "Google Reviews",
   caption: "5-star Google reviews",
   captionSub: "From clickTRUE clients",
@@ -288,6 +330,30 @@ export const cta = {
   body: "Zero obligation. Tailored insights. Talk to a lead gen strategist about your current digital marketing efforts.",
   primaryLabel: "Get a FREE consultation",
   secondaryLabel: "Watch: Is there a difference between B2B and B2C marketing?",
+  videoThumb: asset("illustrations/b2b-video.jpg"),
+  /** Tilted "polaroid" team photo beside the headline. Set to null to hide it. */
+  photo: { src: asset("photos/team-polaroid.png"), alt: "The clickTRUE team", width: 562, height: 360 } as { src: string; alt: string; width: number; height: number } | null,
+};
+
+/**
+ * Contact form. The form is NOT connected yet: submitting shows a note instead of sending.
+ * When the real form is ready, replace the form in contact.tsx (or set `embedNote` to explain it).
+ */
+export const contact = {
+  eyebrow: "Contact us",
+  headline: "Tell us about your",
+  headlineRed: "growth goals.",
+  body: "Leave your details and a lead gen strategist will get back to you.",
+  fields: {
+    name: "Full name",
+    email: "Work email",
+    company: "Company",
+    phone: "Phone number",
+  },
+  submitLabel: "Get a FREE consultation",
+  privacy: "We'll only use your details to reply to your enquiry.",
+  notConnectedNote: "Thanks! This is a test form, so your details weren't sent. The live form will be connected before launch.",
+  whatsappLabel: "Prefer WhatsApp? Chat with us",
 };
 
 export const footer = {
@@ -313,10 +379,11 @@ export const footer = {
         { label: "How We Work", href: "#process" },
         { label: "Real Stories", href: "#testimonials" },
         { label: "FAQ", href: "#faq" },
+        { label: "Contact", href: "#contact" },
       ],
     },
   ],
-  facts: ["17+ Years", "Google Partner", "Meta Business Partner", "HubSpot Consultants"],
+  facts: ["17+ Years", "Google Premier Partner", "Meta Business Partner", "HubSpot Platinum Partner"],
   company: "Clicktrue (M) Sdn Bhd (200801017074 (818367-U))",
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/clicktruemsia/" },

@@ -22,11 +22,15 @@ export function Work() {
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-5">
-            <div className="relative flex aspect-[4/4.6] w-full items-center justify-center overflow-hidden rounded-[20px] bg-surface-2 md:sticky md:top-24">
-              <div className="relative h-[60%] w-[70%]">
-                <Image src={work.logo.src} alt={work.logo.alt} fill sizes="(min-width: 768px) 30vw, 70vw" className="object-contain" />
+            <figure className="overflow-hidden rounded-[20px] bg-surface-2 md:sticky md:top-24">
+              <div className="relative aspect-[4/3] w-full">
+                <Image src={work.banner.src} alt={work.banner.alt} fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" />
               </div>
-            </div>
+              <figcaption className="flex items-center justify-between gap-4 px-5 py-4">
+                <Image src={work.logo.src} alt={work.logo.alt} width={147} height={42} className="h-9 w-auto object-contain" />
+                <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted">{work.banner.caption}</span>
+              </figcaption>
+            </figure>
           </div>
 
           <div className="md:col-span-7">

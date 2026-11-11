@@ -1,4 +1,6 @@
+import { Awards } from "@/components/sites/oblique/awards";
 import { Clients } from "@/components/sites/oblique/clients";
+import { Contact } from "@/components/sites/oblique/contact";
 import { Cta, Footer } from "@/components/sites/oblique/cta-footer";
 import { Faq } from "@/components/sites/oblique/faq";
 import { Header } from "@/components/sites/oblique/header";
@@ -18,6 +20,7 @@ export default function Home() {
         <Hero />
         <Clients />
         <Problem />
+        <Awards />
         <Services />
         <Integration />
         <Work />
@@ -25,6 +28,7 @@ export default function Home() {
         <Testimonials />
         <Faq />
         <Cta />
+        <Contact />
       </main>
       <Footer />
     </>

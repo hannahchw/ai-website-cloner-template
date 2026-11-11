@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { services } from "./content";
@@ -40,7 +41,13 @@ export function Services() {
                       i === active ? "opacity-100" : "opacity-0",
                     )}
                   >
-                    <PhotoOrPlaceholder src={s.image} label={s.imageLabel} sizes="(min-width: 768px) 50vw, 100vw" />
+                    <PhotoOrPlaceholder
+                      src={s.image}
+                      label={s.imageLabel}
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      fit={services.imageFit}
+                      background="var(--brand-surface-2)"
+                    />
                   </div>
                 ))}
               </div>
@@ -91,8 +98,11 @@ export function Services() {
                       <button
                         type="button"
                         onClick={() => setActive(i)}
-                        className="text-left font-display text-[clamp(1.25rem,0.9rem+1.2vw,2rem)] leading-[1.1] tracking-[-0.02em] text-ink/85 transition-colors duration-200 hover:text-accent"
+                        className="flex items-center gap-4 text-left font-display text-[clamp(1.25rem,0.9rem+1.2vw,2rem)] leading-[1.1] tracking-[-0.02em] text-ink/85 transition-colors duration-200 hover:text-accent"
                       >
+                        {s.image && (
+                          <Image src={s.image} alt="" width={44} height={44} className="h-10 w-10 shrink-0 object-contain md:h-11 md:w-11" />
+                        )}
                         {s.title}
                       </button>
                       <span className="hidden text-[11px] font-medium uppercase tracking-[0.22em] text-muted md:inline">

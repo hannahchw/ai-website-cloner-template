@@ -54,7 +54,14 @@ export function Process() {
                   </div>
                   <div className="col-span-12 md:col-span-4">
                     <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] bg-surface-3">
-                      <PhotoOrPlaceholder src={step.image} label={step.imageLabel} sizes="(min-width: 768px) 30vw, 100vw" />
+                      <PhotoOrPlaceholder
+                        src={step.image}
+                        label={step.imageLabel}
+                        sizes="(min-width: 768px) 30vw, 100vw"
+                        fit={step.imageFit}
+                        position={step.imagePosition}
+                        poster={step.poster}
+                      />
                     </div>
                   </div>
                 </div>

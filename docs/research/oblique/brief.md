@@ -50,3 +50,11 @@ The clone was then rebranded as a test of editing by request:
 - **Copy and facts:** taken from https://enquiry.clicktrue.biz/ (captured 11 Nov 2026), including the UniKL case study, 4 FAQs, 6 Google reviews quoted word for word, 14 client logos, PJ address and WhatsApp number
 - **Photos:** all Oblique photos replaced with branded placeholders (`image: null` in `content.ts`). Add a real photo by putting the file in `public/sites/clicktrue/` and setting its path.
 - **Years:** "17+ years" is used in copy, as on the enquiry page. The logo says 15 years.
+
+## Update: real photos, awards and contact form
+
+- **Photos and illustrations:** taken from enquiry.clicktrue.biz (service icons, 3D animations as looping .mp4, UniKL landing page, Google review screenshot, B2B video thumbnail) and from clickTRUE's own Drive (team photos, awards night). Files in `public/sites/clicktrue/` (`services/`, `illustrations/`, `photos/`, `awards/`, `case-study/`).
+- **Awards & partnerships section:** `awards.tsx`, placed after "By the numbers". Copy and badges in `content.ts` → `awards`.
+- **Contact form:** `contact.tsx`, placed before the footer. Fields: name, email, company, phone. **Not connected yet**: submitting only shows a test note. Replace the `<form>` with the real form embed before launch.
+- **Nav:** "Contact" added to the header menu and the footer.
+- **Deploy:** standard Next.js app, deploys to Vercel as-is (import the repo, pick this branch).
