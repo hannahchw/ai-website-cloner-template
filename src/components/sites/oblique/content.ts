@@ -11,8 +11,10 @@ const asset = (path: string) => `/sites/oblique/${path}`;
 
 export const brand = {
   name: "Oblique",
-  logo: { src: asset("brand/oblique-wordmark.png"), width: 209, height: 48 },
-  logoWhite: { src: asset("brand/oblique-wordmark-white.png"), width: 1000, height: 223 },
+  /** Header logo (light background). Old Oblique logo: brand/oblique-wordmark.png, 209x48 */
+  logo: { src: asset("brand/clicktrue-15yrs-colour.png"), width: 751, height: 199, alt: "clickTRUE Malaysia, 15 years" },
+  /** Footer logo (dark background). Colour option: brand/clicktrue-15yrs-dark-bg.png, 387x103 */
+  logoWhite: { src: asset("brand/clicktrue-15yrs-white.png"), width: 501, height: 133, alt: "clickTRUE Malaysia, 15 years" },
   locationTag: "KL · MY",
   contactHref: `${ORIGIN}/contact`,
   quizHref: "https://quiz.oblique.com.my",

@@ -65,7 +65,7 @@ export function Integration() {
                   ))}
                 </svg>
                 <div
-                  className="absolute left-1/2 top-1/2 flex size-[27%] flex-col items-center justify-center rounded-full bg-ink text-surface shadow-[0_30px_60px_-20px_rgba(229,28,66,0.35)] transition-transform duration-300 ease-out"
+                  className="absolute left-1/2 top-1/2 flex size-[27%] flex-col items-center justify-center rounded-full bg-ink text-surface shadow-[0_30px_60px_-20px_color-mix(in_srgb,var(--brand-accent)_35%,transparent)] transition-transform duration-300 ease-out"
                   style={{ transform: `translate(${offset.x}px, ${offset.y}px) translate(-50%, -50%)` }}
                 >
                   <span className="font-display text-[13px] font-semibold tracking-tight md:text-[15px]">

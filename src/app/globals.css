@@ -9,10 +9,11 @@
    Change a value here and it updates everywhere on the page.
    ========================================================== */
 :root {
-  --brand-accent: #e51c42; /* red: highlights, buttons, dots */
-  --brand-ink: #141312; /* near-black: headings, dark sections */
-  --brand-ink-2: #2b2926; /* body text */
-  --brand-muted: #8b8880; /* small grey labels */
+  /* clickTRUE palette. Previous Oblique values: accent #e51c42, ink #141312, ink-2 #2b2926, muted #8b8880 */
+  --brand-accent: #1aaae2; /* clickTRUE blue: highlights, buttons, dots */
+  --brand-ink: #154882; /* clickTRUE navy: headings, dark sections */
+  --brand-ink-2: #2b3a4f; /* body text */
+  --brand-muted: #828486; /* clickTRUE grey: small labels */
   --brand-rule: #e5e2d8; /* thin divider lines */
   --brand-surface: #faf9f6; /* main off-white background */
   --brand-surface-2: #f3f1ea; /* light beige sections */

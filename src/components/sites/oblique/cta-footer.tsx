@@ -90,10 +90,10 @@ export function Footer() {
             <div className="relative mt-12 flex items-center md:mt-16">
               <Image
                 src={brand.logoWhite.src}
-                alt={brand.name}
+                alt={brand.logoWhite.alt}
                 width={brand.logoWhite.width}
                 height={brand.logoWhite.height}
-                className="h-auto w-[min(100%,420px)] select-none md:w-[min(100%,560px)]"
+                className="h-auto w-[min(100%,300px)] select-none md:w-[min(100%,420px)]"
               />
             </div>
 

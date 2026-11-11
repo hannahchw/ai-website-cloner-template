@@ -47,11 +47,11 @@ export function Header() {
         <a aria-label={`${brand.name} home`} className="flex items-center" href="#top">
           <Image
             src={brand.logo.src}
-            alt={brand.name}
+            alt={brand.logo.alt}
             width={brand.logo.width}
             height={brand.logo.height}
             preload
-            className="h-5 w-auto md:h-6"
+            className="h-9 w-auto md:h-10"
           />
         </a>
 
