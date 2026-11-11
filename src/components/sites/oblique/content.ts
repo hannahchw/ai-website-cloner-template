@@ -2,7 +2,7 @@
  * ALL PAGE CONTENT LIVES HERE.
  *
  * To change wording, links, the logo or images, edit this file.
- * Colours live in src/app/globals.css under "BRAND COLOURS".
+ * Colours live in src/app/site.css under "BRAND COLOURS".
  * Images live in public/sites/clicktrue/ (clickTRUE) and public/sites/oblique/ (logo files).
  *
  * Content source: https://enquiry.clicktrue.biz/ (captured 11 Nov 2026).

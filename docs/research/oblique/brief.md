@@ -8,7 +8,7 @@
 | What | File |
 | --- | --- |
 | All text, links, image paths, logo | `src/components/sites/oblique/content.ts` |
-| Brand colours | `src/app/globals.css`, "BRAND COLOURS" block |
+| Brand colours | `src/app/site.css`, "BRAND COLOURS" block |
 | Font (Inter 400–800) | `src/app/layout.tsx` |
 | Section components | `src/components/sites/oblique/*.tsx` |
 | Images, logos, videos | `public/sites/oblique/` |
@@ -45,7 +45,7 @@
 
 The clone was then rebranded as a test of editing by request:
 
-- **Colours:** clickTRUE blue `#1aaae2`, navy `#154882`, grey `#828486` (see "BRAND COLOURS" in `src/app/globals.css`)
+- **Colours:** clickTRUE blue `#1aaae2`, navy `#154882`, grey `#828486` (see "BRAND COLOURS" in `src/app/site.css`)
 - **Logo:** clickTRUE 15-years logo (colour in header, white in footer), files in `public/sites/oblique/brand/`
 - **Copy and facts:** taken from https://enquiry.clicktrue.biz/ (captured 11 Nov 2026), including the UniKL case study, 4 FAQs, 6 Google reviews quoted word for word, 14 client logos, PJ address and WhatsApp number
 - **Photos:** all Oblique photos replaced with branded placeholders (`image: null` in `content.ts`). Add a real photo by putting the file in `public/sites/clicktrue/` and setting its path.

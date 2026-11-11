@@ -1,7 +1,7 @@
 import { process } from "./content";
 import { PhotoOrPlaceholder, SectionLabel } from "./shared";
 
-/** Card colours per theme. Brand colours come from globals.css. */
+/** Card colours per theme. Brand colours come from site.css. */
 const themes = {
   light: { bg: "var(--brand-surface)", fg: "var(--brand-ink)", tag: undefined, body: "var(--brand-ink-2)", meta: "var(--brand-muted)" },
   sand: { bg: "var(--brand-surface-2)", fg: "var(--brand-ink)", tag: undefined, body: "var(--brand-ink-2)", meta: "var(--brand-muted)" },
