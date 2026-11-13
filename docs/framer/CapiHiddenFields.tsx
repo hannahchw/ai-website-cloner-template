@@ -30,12 +30,16 @@ const EVENT_ID_KEY = "ct_fb_event_id"
 
 function readCookie(name: string): string {
     if (typeof document === "undefined") return ""
-    const m = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/[.$?*|{}()[\]\\/+^]/g, "\\$&") + "=([^;]*)"))
-    return m ? decodeURIComponent(m[1]) : ""
+    const parts = document.cookie ? document.cookie.split("; ") : []
+    for (const part of parts) {
+        const i = part.indexOf("=")
+        if (i > -1 && part.slice(0, i) === name) return decodeURIComponent(part.slice(i + 1))
+    }
+    return ""
 }
 
 function makeEventId(): string {
-    if (typeof crypto !== "undefined" && "randomUUID" in crypto) return (crypto as Crypto).randomUUID()
+    if (typeof crypto !== "undefined" && typeof (crypto as Crypto).randomUUID === "function") return (crypto as Crypto).randomUUID()
     return "ev-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10)
 }
 
