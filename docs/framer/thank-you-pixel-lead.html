@@ -1,0 +1,26 @@
+<!--
+  clickTRUE: Meta Pixel "Lead" event for the /thank-you page (Framer)
+  Paste into Framer: open the /thank-you page > Page settings > Custom Code > "End of <body>".
+  Assumes the Meta Pixel base code is already installed site-wide (Site Settings > Custom Code > <head>).
+
+  It sends the SAME fb_event_id that the CAPI Hidden Fields component put into the form,
+  so Meta can de-duplicate the browser (Pixel) and server (CAPI) Lead events.
+-->
+<script>
+  (function () {
+    var id = "";
+    try { id = sessionStorage.getItem("ct_fb_event_id") || ""; } catch (e) {}
+    var tries = 0;
+    function fire() {
+      if (typeof window.fbq !== "function") {
+        if (++tries < 20) { setTimeout(fire, 300); } // wait up to ~6s for the Pixel to load
+        return;
+      }
+      if (id) { window.fbq("track", "Lead", {}, { eventID: id }); }
+      else { window.fbq("track", "Lead"); }
+      // New event id for any further submission in the same visit.
+      try { sessionStorage.removeItem("ct_fb_event_id"); } catch (e) {}
+    }
+    fire();
+  })();
+</script>
