@@ -5,10 +5,13 @@
 //   Source URL, fbp, fbc, fb_event_id, user-agent, ip-address
 // Field names match the clickTRUE ops team's Formstack setup, and can be renamed in the right-hand panel.
 //
-// fb_event_id is also saved in the browser (sessionStorage key "ct_fb_event_id") so the
+// fb_event_id: by default it is ONLY filled when the visitor came from a Meta ad (fbc has a value).
+// Switch "Event ID only for Meta ads" off in the panel to fill it for every enquiry.
+// When filled, it is also saved in the browser (sessionStorage key "ct_fb_event_id") so the
 // Meta Pixel "Lead" event on the thank-you page can send the SAME id (Pixel + CAPI dedup).
-// ip-address uses a free public lookup (api.ipify.org). Turn it off in the panel if your
-// server-side setup (e.g. server GTM) already captures the IP.
+//
+// ip-address uses a free public lookup (api.ipify.org). It can be blank when ad blockers or
+// company networks block the lookup. Turn it off in the panel if server-side GTM captures the IP.
 
 import * as React from "react"
 import { startTransition, useEffect, useState } from "react"
@@ -19,6 +22,7 @@ type Props = {
     fbpName: string
     fbcName: string
     eventIdName: string
+    eventIdMetaOnly: boolean
     userAgentName: string
     ipName: string
     includeIp: boolean
@@ -54,6 +58,27 @@ function buildFbc(): string {
     return ""
 }
 
+// Returns the event id for this visit (creating and saving one if needed),
+// or "" when it should stay empty (Meta-only mode and the visitor did not come from a Meta ad).
+function resolveEventId(fbc: string, metaOnly: boolean): string {
+    if (metaOnly && !fbc) {
+        try {
+            window.sessionStorage.removeItem(EVENT_ID_KEY)
+        } catch {}
+        return ""
+    }
+    try {
+        let id = window.sessionStorage.getItem(EVENT_ID_KEY) || ""
+        if (!id) {
+            id = makeEventId()
+            window.sessionStorage.setItem(EVENT_ID_KEY, id)
+        }
+        return id
+    } catch {
+        return makeEventId()
+    }
+}
+
 /**
  * @framerSupportedLayoutWidth fixed
  * @framerSupportedLayoutHeight fixed
@@ -61,36 +86,37 @@ function buildFbc(): string {
  * @framerIntrinsicHeight 32
  */
 export default function CapiHiddenFields(props: Props) {
-    const { sourceUrlName, fbpName, fbcName, eventIdName, userAgentName, ipName, includeIp } = props
+    const { sourceUrlName, fbpName, fbcName, eventIdName, eventIdMetaOnly, userAgentName, ipName, includeIp } = props
     const onCanvas = RenderTarget.current() === RenderTarget.canvas
     const [v, setV] = useState<Values>({ url: "", fbp: "", fbc: "", eventId: "", ua: "", ip: "" })
 
     useEffect(() => {
         if (onCanvas || typeof window === "undefined") return
-        let eventId = ""
-        try {
-            eventId = window.sessionStorage.getItem(EVENT_ID_KEY) || ""
-            if (!eventId) {
-                eventId = makeEventId()
-                window.sessionStorage.setItem(EVENT_ID_KEY, eventId)
-            }
-        } catch {
-            eventId = makeEventId()
-        }
+        const fbc = buildFbc()
         const base = {
             url: window.location.href,
             fbp: readCookie("_fbp"),
-            fbc: buildFbc(),
-            eventId,
+            fbc,
+            eventId: resolveEventId(fbc, eventIdMetaOnly),
             ua: navigator.userAgent,
         }
         startTransition(() => setV((prev) => ({ ...prev, ...base })))
 
-        // The Pixel may set _fbp a moment after page load, so re-check shortly after.
+        // The Pixel may set _fbp/_fbc a moment after page load, so re-check shortly after.
         const t = window.setTimeout(() => {
             const fbp = readCookie("_fbp")
-            const fbc = buildFbc()
-            startTransition(() => setV((prev) => ({ ...prev, fbp: fbp || prev.fbp, fbc: fbc || prev.fbc })))
+            const fbcLater = buildFbc()
+            startTransition(() =>
+                setV((prev) => {
+                    const nextFbc = fbcLater || prev.fbc
+                    return {
+                        ...prev,
+                        fbp: fbp || prev.fbp,
+                        fbc: nextFbc,
+                        eventId: prev.eventId || resolveEventId(nextFbc, eventIdMetaOnly),
+                    }
+                })
+            )
         }, 2500)
 
         if (includeIp) {
@@ -100,7 +126,7 @@ export default function CapiHiddenFields(props: Props) {
                 .catch(() => {})
         }
         return () => window.clearTimeout(t)
-    }, [onCanvas, includeIp])
+    }, [onCanvas, includeIp, eventIdMetaOnly])
 
     if (onCanvas) {
         return (
@@ -143,6 +169,13 @@ addPropertyControls(CapiHiddenFields, {
     fbpName: { type: ControlType.String, title: "fbp name", defaultValue: "fbp" },
     fbcName: { type: ControlType.String, title: "fbc name", defaultValue: "fbc" },
     eventIdName: { type: ControlType.String, title: "Event ID name", defaultValue: "fb_event_id" },
+    eventIdMetaOnly: {
+        type: ControlType.Boolean,
+        title: "Event ID only for Meta ads",
+        defaultValue: true,
+        enabledTitle: "Meta ads",
+        disabledTitle: "Everyone",
+    },
     userAgentName: { type: ControlType.String, title: "User agent name", defaultValue: "user-agent" },
     includeIp: { type: ControlType.Boolean, title: "Include IP", defaultValue: true },
     ipName: {
